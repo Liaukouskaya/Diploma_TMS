@@ -1,0 +1,63 @@
+{% extends 'base-useradmin.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+        <div class="posts-all">
+
+            <div class="delete-post-b">
+                <form method="post">
+                    {% csrf_token %}
+                    <button class="delete-post" type="submit" name="submit_button" value="posts-delete">✕</button>
+                    <input type="hidden" name="post_id" value="{{ post.id }}">
+                </form>
+            </div>
+
+            <div class="posts-all-container">
+                    <a href="/useradmin/user-{{ post.author.profile_id }}"><img src="{{ post.author.avatar.url }}"></a>
+                <div class="posts-comment-user-date">
+                    <a href="/useradmin/user-{{ post.author.profile_id }}">{{ post.author }}</a>
+                    <span class="posts-comment-date">{{ post.date }}</span>
+                </div>
+            </div>
+
+            {% for photo in post.photo_post.all%}
+                <div class="posts-all-1">
+                    <a href="/useradmin/user-{{ photo.author.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                </div>
+            {% endfor %}
+
+            <div class="posts-text">
+                <p>{{ post.content }}</p>
+            </div>
+
+            <div class="unlike-button">
+                <p>&nbsp;</p>
+            </div>
+
+        </div>
+
+    {% for comment in all_comment %}
+
+    <div class="photo-all-comment">
+        <a href="/useradmin/user-{{ comment.author.profile_id }}"><img src="{{ comment.author.avatar.url }}"></a>
+            <div class="photo-comment-user-date">
+                <a href="/useradmin/user-{{ comment.author.profile_id }}">{{ comment.author }}</a>
+                <span class="photo-comment-date">{{ comment.date }}</span>
+            </div>
+        <p>{{ comment.comment }}</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button class="delete-comment" type="submit" name="submit_button" value="comment-delete">✕</button>
+            <input type="hidden" name="comment_id" value="{{ comment.id }}">
+        </form>
+
+    </div>
+
+    {% endfor %}
+
+
+{% endblock %}

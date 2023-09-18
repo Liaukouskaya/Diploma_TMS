@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+    <div class="standard">
+        <h3>Оповещения</h3>
+    </div>
+
+    {% for notification in user_notification %}
+
+        {% if notification.type_object == 'follow' %}
+
+            <div class="photo-all-comment">
+                <a href="/user-{{ notification.sender_user.profile_id }}"><img src="{{ notification.sender_user.avatar.url }}"></a>
+                    <div class="photo-comment-user-date">
+                        <a href="/user-{{ notification.sender_user.profile_id }}">{{ notification.sender_user.first_name }} {{ notification.sender_user.last_name }}</a>
+                    </div>
+                <p>{{ notification.message }}</p>
+
+            </div>
+
+            <div class="view-post-b-group">
+                <form action="/profile_page/followers">
+                    <button class="view-post"><p>➤</p></button>
+                </form>
+            </div>
+
+        {% elif notification.type_object == 'photo_like' %}
+
+            <div class="photo-all-comment">
+                <a href="/user-{{ notification.sender_user.profile_id }}"><img src="{{ notification.sender_user.avatar.url }}"></a>
+                    <div class="photo-comment-user-date">
+                        <a href="/user-{{ notification.sender_user.profile_id }}">{{ notification.sender_user.first_name }} {{ notification.sender_user.last_name }}</a>
+                    </div>
+                <p>{{ notification.message }}</p>
+
+            </div>
+
+            <div class="view-post-b-group">
+                <form action="/profile_page/photo/show-{{ notification.object_id }}">
+                    <button class="view-post"><p>➤</p></button>
+                </form>
+            </div>
+
+        {% elif notification.type_object == 'photo_comment' %}
+
+            <div class="photo-all-comment">
+                <a href="/user-{{ notification.sender_user.profile_id }}"><img src="{{ notification.sender_user.avatar.url }}"></a>
+                    <div class="photo-comment-user-date">
+                        <a href="/user-{{ notification.sender_user.profile_id }}">{{ notification.sender_user.first_name }} {{ notification.sender_user.last_name }}</a>
+                    </div>
+                <p>{{ notification.message }}</p>
+
+            </div>
+
+            <div class="view-post-b-group">
+                <form action="/profile_page/photo/show-{{ notification.object_id }}">
+                    <button class="view-post"><p>➤</p></button>
+                </form>
+            </div>
+
+        {% elif notification.type_object == 'post_like' %}
+
+            <div class="photo-all-comment">
+                <a href="/user-{{ notification.sender_user.profile_id }}"><img src="{{ notification.sender_user.avatar.url }}"></a>
+                    <div class="photo-comment-user-date">
+                        <a href="/user-{{ notification.sender_user.profile_id }}">{{ notification.sender_user.first_name }} {{ notification.sender_user.last_name }}</a>
+                    </div>
+                <p>{{ notification.message }}</p>
+
+            </div>
+
+            <div class="view-post-b-group">
+                <form action="/profile_page/post-{{ notification.object_id }}">
+                    <button class="view-post"><p>➤</p></button>
+                </form>
+            </div>
+
+        {% elif notification.type_object == 'post_comment' %}
+
+            <div class="photo-all-comment">
+                <a href="/user-{{ notification.sender_user.profile_id }}"><img src="{{ notification.sender_user.avatar.url }}"></a>
+                    <div class="photo-comment-user-date">
+                        <a href="/user-{{ notification.sender_user.profile_id }}">{{ notification.sender_user.first_name }} {{ notification.sender_user.last_name }}</a>
+                    </div>
+                <p>{{ notification.message }}</p>
+
+            </div>
+
+            <div class="view-post-b-group">
+                <form action="/profile_page/post-{{ notification.object_id }}">
+                    <button class="view-post"><p>➤</p></button>
+                </form>
+            </div>
+
+        {% elif notification.type_object == 'repost_comment' %}
+
+            <div class="photo-all-comment">
+                <a href="/user-{{ notification.sender_user.profile_id }}"><img src="{{ notification.sender_user.avatar.url }}"></a>
+                    <div class="photo-comment-user-date">
+                        <a href="/user-{{ notification.sender_user.profile_id }}">{{ notification.sender_user.first_name }} {{ notification.sender_user.last_name }}</a>
+                    </div>
+                <p>{{ notification.message }}</p>
+
+            </div>
+
+            <div class="view-post-b-group">
+                <form action="/profile_page/repost-{{ notification.object_id }}">
+                    <button class="view-post"><p>➤</p></button>
+                </form>
+            </div>
+
+        {% elif notification.type_object == 'group_repost_comment' %}
+
+            <div class="photo-all-comment">
+                <a href="/user-{{ notification.sender_user.profile_id }}"><img src="{{ notification.sender_user.avatar.url }}"></a>
+                    <div class="photo-comment-user-date">
+                        <a href="/user-{{ notification.sender_user.profile_id }}">{{ notification.sender_user.first_name }} {{ notification.sender_user.last_name }}</a>
+                    </div>
+                <p>{{ notification.message }}</p>
+
+            </div>
+
+            <div class="view-post-b-group">
+                <form action="/profile_page/grop-repost-{{ notification.object_id }}">
+                    <button class="view-post"><p>➤</p></button>
+                </form>
+            </div>
+
+        {% endif %}
+
+    {% endfor %}
+
+{% endblock %}

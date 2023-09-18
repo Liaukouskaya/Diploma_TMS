@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+        <div class="standard">
+            <h3>Что будем искать?</h3>
+        </div>
+
+        <div class="search_field">
+            <form method="post">
+                {% csrf_token %}
+                {{ comment_form.comment }}
+                <button type="submit" name="submit_button" value="start_search">Найти</button>
+            </form>
+        </div>
+
+{% endblock %}

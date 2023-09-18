@@ -1,0 +1,387 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+<div class="standard">
+        <p>Отправить в личные сообщения</p>
+    </div>
+
+        <div class="search_field">
+            <form method="post">
+                {% csrf_token %}
+                {{ comment_form.comment }}
+                <button type="submit" name="submit_button" value="start_search">Найти</button>
+            </form>
+        </div>
+
+        <div class="invisible-rectangle"></div>
+
+
+    {% if search_people %}
+
+        {% for people in search_people %}
+
+            <div class="photo-all-comment">
+                <a href="/user-{{ people.profile_id }}"><img src="{{ people.avatar.url }}"></a>
+                    <div class="photo-comment-user-date">
+                        <a href="/user-{{ people.profile_id }}">{{ people.first_name }} {{ people.last_name }}</a>
+                    </div>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <button class="create-repost-short" type="submit" name="submit_button" value="post_send_button">↩</button>
+                        <input type="hidden" name="user_id" value="{{ people.profile_id }}">
+                </form>
+
+            </div>
+
+            {% endfor %}
+
+    {% endif %}
+
+    <div class="standard">
+        <p>Создать репост записи</p>
+    </div>
+
+        <div class="photo-comment">
+            <form method="post">
+                {% csrf_token %}
+                {{ comment_form.comment }}
+                <button type="submit" name="submit_button" value="create_repost">Добавить</button>
+                <input type="hidden" name="post_id" value="{{ post.id }}">
+            </form>
+        </div>
+
+        <div class="invisible-rectangle"></div>
+
+    {% if post.type_object == 'Posts' %}
+
+        <div class="posts-all">
+
+            <div class="delete-post-b-group">
+                <form action="/profile_page/report/post-{{ post.id }}">
+                    <button class="delete-post" type="submit">!</button>
+                </form>
+            </div>
+
+            <div class="repost-btn">
+                <form action="/profile_page/post-{{ post.id }}/repost">
+                    <button class="delete-post" type="submit">↩</button>
+                </form>
+            </div>
+
+
+            <div class="posts-all-container">
+                    <a href="/user-{{ post.author.profile_id }}"><img src="{{ post.author.avatar.url }}"></a>
+                <div class="posts-comment-user-date">
+                    <a href="/user-{{ post.author.profile_id }}">
+
+                        {% if post.author.profile_id != 1 %}
+                            {{ post.author }}
+                        {% else %}
+                            Системное сообщение
+                        {% endif %}
+
+                    </a>
+                    <span class="posts-comment-date">{{ post.date }}</span>
+                </div>
+            </div>
+
+            {% if post.photo_post.all|length == 1 %}
+                <div class="posts-all-1">
+                    <a href="/profile_page/photo/show-{{ post.photo_post.all.first.id }}">
+                        <img src="{{ post.photo_post.all.first.photo.url }}"></a>
+                </div>
+            {% elif post.photo_post.all|length == 2 %}
+                <div class="posts-all-2">
+                    {% for photo in post.photo_post.all %}
+                    <a href="/profile_page/photo/show-{{ photo.id }}"><img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 3 %}
+                <div class="posts-all-1">
+                    <a href="/profile_page/photo/show-{{ post.photo_post.all.first.id }}">
+                        <img src="{{ post.photo_post.all.first.photo.url }}"></a>
+                </div>
+                <div class="posts-all-2">
+                    {% for photo in post.photo_post.all|slice:"1:" %}
+                    <a href="/profile_page/photo/show-{{ photo.id }}"><img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 4 %}
+                <div class="posts-all-1">
+                    <a href="/profile_page/photo/show-{{ post.photo_post.all.first.id }}">
+                        <img src="{{ post.photo_post.all.first.photo.url }}"></a>
+                </div>
+                <div class="posts-all-3">
+                    {% for photo in post.photo_post.all|slice:"1:" %}
+                    <a href="/profile_page/photo/show-{{ photo.id }}"><img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 5 %}
+                <div class="posts-all-1">
+                    <a href="/profile_page/photo/show-{{ post.photo_post.all.first.id }}">
+                        <img src="{{ post.photo_post.all.first.photo.url }}"></a>
+                </div>
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:"1:" %}
+                    <a href="/profile_page/photo/show-{{ photo.id }}"><img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 6 %}
+                <div class="posts-all-2">
+                    {% for photo in post.photo_post.all|slice:":2" %}
+                    <a href="/profile_page/photo/show-{{ photo.id }}"><img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:"2:" %}
+                    <a href="/profile_page/photo/show-{{ photo.id }}"><img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 7 %}
+                <div class="posts-all-3">
+                    {% for photo in post.photo_post.all|slice:":3" %}
+                    <a href="/profile_page/photo/show-{{ photo.id }}"><img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:"3:" %}
+                    <a href="/profile_page/photo/show-{{ photo.id }}"><img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 8 %}
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:":4" %}
+                    <a href="/profile_page/photo/show-{{ photo.id }}"><img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:"4:" %}
+                    <a href="/profile_page/photo/show-{{ photo.id }}"><img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length > 8 %}
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:":4" %}
+                    <a href="/profile_page/photo/show-{{ photo.id }}"><img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:"4:8" %}
+                    <a href="/profile_page/photo/show-{{ photo.id }}"><img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+                    <span class="posts-comment-date">+ еще {{ post.photo_post.all|slice:"8:"|length }} фото в посте</span>
+            {% endif %}
+
+                <div class="posts-text">
+                    <p>{{ post.content }}</p>
+                </div>
+
+
+            {% if request.user in post.like_post.all %}
+
+                <div class="unlike-button">
+                    <form method="post">
+                        {% csrf_token %}
+                    <button type="submit" name="submit_button" value="set_unlike">❤&nbsp;&nbsp;{{ post.like_post.all|length }}</button>
+                        <input type="hidden" name="post_id" value="{{ post.id }}">
+                    </form>
+                    <p>&nbsp;</p>
+                </div>
+
+            {% else %}
+
+                <div class="like-button">
+                    <form method="post">
+                        {% csrf_token %}
+                    <button type="submit" name="submit_button" value="set_like">❤&nbsp;&nbsp;{{ post.like_post.all|length }}</button>
+                        <input type="hidden" name="post_id" value="{{ post.id }}">
+                    </form>
+                    <p>&nbsp;</p>
+
+                </div>
+
+            {% endif %}
+
+                <div class="view-post-b">
+                    <form action="/user-{{ post.author.profile_id }}/post-{{ post.id }}">
+                        <button class="view-post"><p>➤</p></button>
+                    </form>
+                </div>
+
+        </div>
+
+    {% elif post.type_object == 'GroupPosts' %}
+
+        <div class="posts-all">
+
+            <div class="delete-post-b-group">
+                <form action="/profile_page/report/group_post-{{ post.id }}">
+                    <button class="delete-post" type="submit">!</button>
+                </form>
+            </div>
+
+            <div class="repost-btn">
+                <form action="/profile_page/post-{{ post.id }}/group_repost">
+                    <button class="delete-post" type="submit">↩</button>
+                </form>
+            </div>
+
+            <div class="posts-all-container">
+                    <a href="/groups/group-{{ post.author.profile_id }}">
+                        <img src="{{ post.author.avatar.url }}"></a>
+                <div class="posts-comment-user-date">
+                    <a href="/groups/group-{{ post.author.profile_id }}">{{ post.author }}</a>
+                    <span class="posts-comment-date">{{ post.date }}</span>
+                </div>
+            </div>
+
+            {% if post.photo_post.all|length == 1 %}
+
+                <div class="posts-all-1">
+                    <a href="/groups/group-{{ post.author.profile_id }}/photo/show-{{ post.photo_post.all.first.id }}">
+                        <img src="{{ post.photo_post.all.first.photo.url }}"></a>
+                </div>
+            {% elif post.photo_post.all|length == 2 %}
+                <div class="posts-all-2">
+                    {% for photo in post.photo_post.all %}
+                    <a href="/groups/group-{{ photo.author.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 3 %}
+                <div class="posts-all-1">
+                    <a href="/groups/group-{{ post.author.profile_id }}/photo/show-{{ post.photo_post.all.first.id }}">
+                        <img src="{{ post.photo_post.all.first.photo.url }}"></a>
+                </div>
+                <div class="posts-all-2">
+                    {% for photo in post.photo_post.all|slice:"1:" %}
+                    <a href="/groups/group-{{ photo.author.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 4 %}
+                <div class="posts-all-1">
+                    <a href="/groups/group-{{ post.author.profile_id }}/photo/show-{{ post.photo_post.all.first.id }}">
+                        <img src="{{ post.photo_post.all.first.photo.url }}"></a>
+                </div>
+                <div class="posts-all-3">
+                    {% for photo in post.photo_post.all|slice:"1:" %}
+                    <a href="/groups/group-{{ photo.author.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 5 %}
+                <div class="posts-all-1">
+                    <a href="/groups/group-{{ post.author.profile_id }}/photo/show-{{ post.photo_post.all.first.id }}">
+                        <img src="{{ post.photo_post.all.first.photo.url }}"></a>
+                </div>
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:"1:" %}
+                    <a href="/groups/group-{{ photo.author.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 6 %}
+                <div class="posts-all-2">
+                    {% for photo in post.photo_post.all|slice:":2" %}
+                    <a href="/groups/group-{{ photo.author.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:"2:" %}
+                    <a href="/groups/group-{{ photo.author.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 7 %}
+                <div class="posts-all-3">
+                    {% for photo in post.photo_post.all|slice:":3" %}
+                    <a href="/groups/group-{{ photo.author.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:"3:" %}
+                    <a href="/groups/group-{{ photo.author.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 8 %}
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:":4" %}
+                    <a href="/groups/group-{{ photo.author.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:"4:" %}
+                    <a href="/groups/group-{{ photo.author.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length > 8 %}
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:":4" %}
+                    <a href="/groups/group-{{ photo.author.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:"4:8" %}
+                    <a href="/groups/group-{{ photo.author.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+                    <span class="posts-comment-date">+ еще {{ post.photo_post.all|slice:"8:"|length }} фото в посте</span>
+            {% endif %}
+
+                <div class="posts-text">
+                    <p>{{ post.content }}</p>
+                </div>
+
+
+            {% if request.user in post.like_post.all %}
+
+                <div class="unlike-button">
+                    <form method="post">
+                        {% csrf_token %}
+                    <button type="submit" name="submit_button" value="set_unlike_group">❤&nbsp;&nbsp;{{ post.like_post.all|length }}</button>
+                        <input type="hidden" name="post_id" value="{{ post.id }}">
+                    </form>
+                    <p>&nbsp;</p>
+                </div>
+
+            {% else %}
+
+                <div class="like-button">
+                    <form method="post">
+                        {% csrf_token %}
+                    <button type="submit" name="submit_button" value="set_like_group">❤&nbsp;&nbsp;{{ post.like_post.all|length }}</button>
+                        <input type="hidden" name="post_id" value="{{ post.id }}">
+                    </form>
+                    <p>&nbsp;</p>
+
+                </div>
+
+            {% endif %}
+
+                <div class="view-post-b">
+                    <form action="/groups/group-{{ post.author.profile_id }}/post-{{ post.id }}">
+                        <button class="view-post"><p>➤</p></button>
+                    </form>
+                </div>
+
+        </div>
+
+
+    {% endif %}
+
+
+{% endblock %}

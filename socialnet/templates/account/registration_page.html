@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block menu2 %}
+
+    <div class="menu2">
+    <a href="{% url 'login_page' %}">ВОЙТИ НА САЙТ</a>
+    <a href="{% url 'registration_page' %}">РЕГИСТРАЦИЯ</a>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="standard">
+        <h3>Регистрация нового пользователя</h3>
+    </div>
+
+    <div class="error">
+        {% if error %}
+            <p>{{ error }}</p>
+        {% endif %}
+    </div>
+
+    <div class="registration_login">
+        <form method="post">
+            {% csrf_token %}
+            {{ registration_form.first_name }}<br>
+            {{ registration_form.last_name }}<br>
+            {{ registration_form.email }}<br>
+            {{ registration_form.password }}<br>
+            {{ registration_form.password_confirmation }}<br>
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    </div>
+
+{% endblock %}
