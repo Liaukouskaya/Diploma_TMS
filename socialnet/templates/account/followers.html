@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block menu2 %}
+
+    <div class="menu2">
+    <a href="{% url 'profile_page_followers' %}">ПОДПИСЧИКИ</a>
+    <a href="{% url 'profile_page_following' %}">ПОДПИСКИ</a>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="avatar-another-user">
+        <a href="{% url 'profile_page' %}"><img src="{{ person.avatar.url }}"></a>
+    </div>
+
+    <div class="standard">
+
+        <h3><a href="/user-{{ person.profile_id }}">{{ person }}</a></h3>
+        <p>Всего подписчиков: {{ followers_count }}</p>
+
+    </div>
+
+        {% for follower in followers %}
+
+        <div class="photo-all-comment">
+            <a href="/user-{{ follower.profile_id }}"><img src="{{ follower.avatar.url }}"></a>
+                <div class="photo-comment-user-date">
+                    <a href="/user-{{ follower.profile_id }}">{{ follower.first_name }} {{ follower.last_name }}</a>
+                </div>
+
+            {% if follower.user in i_following %}
+
+            <form method="post">
+                {% csrf_token %}
+                <button class="delete-comment" type="submit" name="submit_button" value="unfollow">✕</button>
+                    <input type="hidden" name="user_id" value="{{ follower.profile_id }}">
+            </form>
+
+            {% else %}
+
+            <form method="post">
+                {% csrf_token %}
+                <button class="delete-comment-pluse" type="submit" name="submit_button" value="follow">+</button>
+                    <input type="hidden" name="user_id" value="{{ follower.profile_id }}">
+            </form>
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+
+{% endblock %}

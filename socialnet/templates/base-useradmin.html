@@ -1,0 +1,64 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'account/css/main.css' %}">
+
+    {% block scripts %}
+      <script src="{% static 'account/js/account.js' %}"></script>
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <div class="background">
+        <img src="/media/background.jpg">
+    </div>
+
+    {% if request.user.is_authenticated %}
+
+        <div class="menu">
+
+            {% if not_read_message %}
+                <a href="{% url 'all_messages' %}">ЛЕНТА<span id="menu-message">{{ not_read_message }}</span></a>
+            {% else %}
+                <a href="{% url 'all_messages' %}">ЛЕНТА</a>
+            {% endif %}
+                <a href="{% url 'create_notification' %}">ОПОВЕЩЕНИЕ</a>
+                <a href="{% url 'admin_search' %}">ПОИСК</a>
+
+        </div>
+
+        <div class="menu-user">
+            <a id="user" href="{% url 'settings_page_admin' %}"><span class="dot-yes">●&nbsp;&nbsp;</span>ADMIN</a>
+        </div>
+
+    {% else %}
+
+        <div class="menu-enter">
+            <a href="{% url 'login_page' %}">ВОЙТИ</a>
+        </div>
+
+    {% endif %}
+
+    <main>
+        {% block menu2%}
+        {% endblock %}
+    </main>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+
+</body>
+</html>

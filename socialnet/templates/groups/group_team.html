@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block menu2 %}
+
+    <div class="menu2">
+    <a href="/groups/group-{{ group.profile_id }}/followers">ПОДПИСЧИКИ</a>
+    <a href="/groups/group-{{ group.profile_id }}/team">УПРАВЛЕНИЕ</a>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="avatar-another-user">
+        <a href="/groups/group-{{ group.profile_id }}"><img src="{{ group.avatar.url }}"></a>
+    </div>
+
+    <div class="standard">
+
+        <h3><a href="/groups/group-{{ group.profile_id }}">{{ group }}</a></h3>
+
+    </div>
+
+    <div class="standard">
+
+        <h3>Создатель</h3>
+
+    </div>
+
+        <div class="photo-all-comment">
+            <a href="/user-{{ creator.profile_id }}"><img src="{{ creator.avatar.url }}"></a>
+                <div class="photo-comment-user-date">
+                    <a href="/user-{{ creator.profile_id }}">{{ creator.first_name }} {{ creator.last_name }}</a>
+                </div>
+
+            {% if request.user.id != creator.profile_id %}
+
+                {% if creator.user in i_following %}
+
+                <form method="post">
+                    {% csrf_token %}
+                    <button class="delete-comment" type="submit" name="submit_button" value="unfollow">✕</button>
+                        <input type="hidden" name="user_id" value="{{ creator.profile_id }}">
+                </form>
+
+                {% else %}
+
+                <form method="post">
+                    {% csrf_token %}
+                    <button class="delete-comment-pluse" type="submit" name="submit_button" value="follow">+</button>
+                        <input type="hidden" name="user_id" value="{{ creator.profile_id }}">
+                </form>
+
+                {% endif %}
+
+            {% endif %}
+
+        </div>
+
+
+    <div class="standard">
+
+        <h3>Администраторы</h3>
+
+    </div>
+
+    {% for follower in team %}
+
+        <div class="photo-all-comment">
+            <a href="/user-{{ follower.profile_id }}"><img src="{{ follower.avatar.url }}"></a>
+                <div class="photo-comment-user-date">
+                    <a href="/user-{{ follower.profile_id }}">{{ follower.first_name }} {{ follower.last_name }}</a>
+                </div>
+
+            {% if user_id != follower.user %}
+
+                {% if request.user.id != creator.profile_id %}
+
+                    {% if follower.user in i_following %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <button class="delete-comment" type="submit" name="submit_button" value="unfollow">✕</button>
+                            <input type="hidden" name="user_id" value="{{ follower.profile_id }}">
+                    </form>
+
+                    {% else %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <button class="delete-comment-pluse" type="submit" name="submit_button" value="follow">+</button>
+                            <input type="hidden" name="user_id" value="{{ follower.profile_id }}">
+                    </form>
+
+                    {% endif %}
+
+                {% else %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <button class="delete-comment" type="submit" name="submit_button" value="remove">✕</button>
+                            <input type="hidden" name="user_id" value="{{ follower.profile_id }}">
+                    </form>
+
+                {% endif %}
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+
+        {% if group.user == request.user or request.user.id in team %}
+
+        <div class="standard">
+
+            <h3>Добавить администратора</h3>
+
+        </div>
+
+        <div class="search_field">
+            <form method="post">
+                {% csrf_token %}
+                {{ comment_form.comment }}
+                <button type="submit" name="submit_button" value="start_search">Найти</button>
+            </form>
+        </div>
+
+        <div class="invisible-rectangle"></div>
+
+        {% if search_people %}
+
+            <div class="standard">
+
+                <h3>Результат поиска</h3>
+
+            </div>
+
+        {% endif %}
+
+
+
+        {% for follower in search_people %}
+
+            <div class="photo-all-comment">
+                <a href="/user-{{ follower.profile_id }}"><img src="{{ follower.avatar.url }}"></a>
+                    <div class="photo-comment-user-date">
+                        <a href="/user-{{ follower.profile_id }}">{{ follower.first_name }} {{ follower.last_name }}</a>
+                    </div>
+
+                {% if user_id != follower.user %}
+
+                    {% if follower.user.id in team_id %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <button class="delete-comment" type="submit" name="submit_button" value="remove">✕</button>
+                            <input type="hidden" name="user_id" value="{{ follower.profile_id }}">
+                    </form>
+
+                    {% else %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <button class="delete-comment-pluse" type="submit" name="submit_button" value="add">+</button>
+                            <input type="hidden" name="user_id" value="{{ follower.profile_id }}">
+                    </form>
+
+                    {% endif %}
+
+                {% endif %}
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+
+
+
+{% endblock %}

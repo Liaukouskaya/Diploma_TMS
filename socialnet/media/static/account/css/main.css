@@ -1,0 +1,2814 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
+@import url('https://fonts.cdnfonts.com/css/cinematografica');
+
+/* Фон --------------------------------------------------------------- */
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* opacity: 0.8; */
+}
+
+/* Аватар ------------------------------------------------------------ */
+
+/* Аватар общее */
+.avatar {
+    width: 132px;
+    height: 132px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #fff; /* Параметры рамки */
+    outline: solid 2px RGB(30, 30, 30);
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* Аватар картинка */
+.avatar img{
+    width: 132px;
+    height: 132px;
+    margin: 0 auto;
+    position: relative;
+    bottom: 20px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: flex; /* Картинка по центру над текстом */
+}
+
+/* Аватар общее другой пользователь */
+.avatar-another-user {
+    width: 132px;
+    height: 132px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #fff; /* Параметры рамки */
+    outline: solid 2px RGB(30, 30, 30);
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* Аватар картинка другой пользователь */
+.avatar-another-user img {
+    width: 132px;
+    height: 132px;
+    margin: 0 auto;
+    position: relative;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: flex; /* Картинка по центру над текстом */
+}
+
+/* Аватар кнопка */
+.avatar input {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 132px;
+    height: 20px;
+    position: relative;
+    bottom: -107px;
+    z-index: 9999;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+/* Аватар input */
+.avatar input[type=file]::file-selector-button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 132px;
+    height: 20px;
+    position: relative;
+    bottom: -107px;
+    z-index: 9999;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+/* Аватар input */
+input[type="file"]::before {
+  position: absolute;
+  pointer-events: none;
+  content: "Edit";
+  left: 55px;
+  top: 2px;
+}
+
+
+/* Главное Меню ------------------------------------------------------ */
+
+/* Меню общее */
+.menu {
+    padding: 20px; /* Поля вокруг текста */
+    background: RGB(30, 30, 30); /* Цвет фона */
+    text-align: center; /* Положение текста */
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Меню текст*/
+.menu A {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    text-decoration: none; /* Декорация текста */
+    margin: 0 1% 0 1%; /* Отступы пунктов меню */
+    color: #fff; /* Цвет текста меню */
+    position: relative;
+    width: 110px;
+}
+
+/* User в сети текст*/
+#user {
+    /* margin-right: 20px;
+    margin-left: -50%;
+    right: -25px; */
+    color: #fff; /* Цвет текста меню */
+    position: absolute;
+    display: flex;
+    /* width: calc(100% - 70px); */
+    justify-content: flex-end;
+    right: 20px;
+}
+
+/* Точка user текст*/
+.dot-yes {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    text-decoration: none; /* Декорация текста */
+    color: RGB(0, 157, 224); /* Цвет текста меню */
+    position: relative;
+    bottom: 1px;
+}
+
+/* Изменение цвета при наведении курсора мыши в меню */
+.menu A:hover {
+    color: RGB(0, 157, 224);
+}
+
+/* Вывод не прочитанных сообщений в меню */
+#menu-message {
+    margin-left: 5px;
+    up: 10px;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    font-size: 10px;
+    position: relative;
+    top: -2px;
+}
+
+/* Меню общее */
+.menu-enter {
+    padding: 20px; /* Поля вокруг текста */
+    background: RGB(30, 30, 30); /* Цвет фона */
+    text-align: center; /* Положение текста */
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+/* Меню текст*/
+.menu-enter A {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    text-decoration: none; /* Декорация текста */
+    margin: 0 1% 0 1%; /* Отступы пунктов меню */
+    color: #fff; /* Цвет текста меню */
+    width: 50px;
+    display: flex;
+
+}
+
+/* Меню текст*/
+.menu-user A {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    text-decoration: none; /* Декорация текста */
+    margin: 0 1% 0 1%; /* Отступы пунктов меню */
+    color: #fff; /* Цвет текста меню */
+    position: absolute;
+    top: 28px;
+}
+
+
+
+/* Второстепенное меню ----------------------------------------------- */
+
+/* Второстепенное меню общее */
+.menu2 {
+    padding: 20px; /* Поля вокруг текста */
+    background: rgba(255, 255, 255, 0.0);
+    text-align: center; /* Положение текста */
+    display: flex;
+    justify-content: center;
+    margin-bottom: -15px;
+}
+
+
+/* Второстепенное меню текст*/
+.menu2 A {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    text-decoration: none; /* Декорация текста */
+    margin: 0 50px 0 50px; /* Отступы пунктов меню */
+    color: RGB(209, 209, 209); /* Цвет текста меню */
+    width: 100px;
+
+}
+
+/* Изменение цвета при наведении курсора мыши в второстепенном меню */
+.menu2 A:hover {
+    color: RGB(30, 30, 30);
+}
+
+
+/* Форма регистрации и логирования ----------------------------------- */
+
+/* Регистрация и логин общее */
+.registration_login {
+    margin-right: 25%; /* Отступы справа */
+    margin-left: 25%; /* Отступы слева */
+    text-align:center; /* Расположение в блоке - по центру */
+}
+
+/* Регистрация и логин поля ввода */
+.registration_login input{
+    text-align: center; /* Расположение текста в поле ввода - по центру */
+    font-family: 'Ubuntu Condensed', sans-serif; /* Шрифт */
+    width: 250px; /* Ширина */
+    height: 25px; /* Высота */
+    margin-bottom: 5px; /* Отступ с инзу */
+}
+
+/* Регистрация и логин кнопка */
+.registration_login button{
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 258px;
+    height: 33px;
+    margin-bottom: 5px;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+
+/* Имя в профиле и статус админа ------------------------------------- */
+
+/* Имя в профиле и статус админа общее */
+.name-admin {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    margin-right: 25%; /* Отступы справа */
+    margin-left: 25%; /* Отступы слева */
+    text-align:center; /* Расположение в блоке - по центру */
+    margin-bottom: 10px;
+}
+
+/* H3 */
+.name-admin H3 {
+    margin-bottom: 0px;
+}
+
+/* SPAN */
+.name-admin SPAN {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    border: 2px;
+    padding: 2px;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    float: center;
+}
+
+
+/* Стандартные стили ------------------------------------------------- */
+
+/* Стандартные стили общее */
+.standard {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    margin-right: 25%; /* Отступы справа */
+    margin-left: 25%; /* Отступы слева */
+    text-align:center; /* Расположение в блоке - по центру */
+}
+
+/* Стандартные стили кнопка */
+.standard button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 258px;
+    height: 33px;
+    margin-bottom: 5px;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+/* H1 */
+.standard H1 {}
+
+/* H3 */
+.standard H3 {}
+
+/* P */
+.standard P {}
+
+/* SPAN */
+.standard SPAN {
+}
+
+/* A */
+.standard A {
+    color: RGB(0, 157, 224); /* Цвет текста ссылок */
+    text-decoration: none; /* Декорация текста ссылок */
+}
+
+
+/* Вывод ошибок ------------------------------------------------------ */
+
+/* Вывод ошибок общее */
+.error {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    margin-right: 25%; /* Отступы справа */
+    margin-left: 25%; /* Отступы слева */
+    text-align:center; /* Расположение в блоке - по центру */
+    color: red;
+}
+
+/* H1 */
+.standard H1 {}
+
+/* H3 */
+.standard H3 {}
+
+/* P */
+.standard P {}
+
+
+/* Подписчики и подписки --------------------------------------------- */
+
+/* Подписчики и подписки контейнер общее */
+.followers-following-container {
+    flex-wrap: wrap;
+    justify-content: center; /* Расположить элементы в контейнере по центру */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 10px;
+    margin-right: 0; /* Отступы справа */
+    margin-left: 0; /* Отступы слева */
+}
+
+/* A */
+.followers-following-container A {
+    color: RGB(0, 157, 224); /* Цвет текста ссылок */
+    text-decoration: none; /* Декорация текста ссылок */
+    margin-bottom: 10px; /* Отступы сверху */
+    font-size: 15px;
+
+}
+
+/* Подписчики (following) общее */
+.followers {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    margin-right: 0%; /* Отступы справа */
+    margin-left: 10%; /* Отступы слева */
+    text-align: center; /* Расположение в блоке - по центру */
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    position: relative;
+    float: right;
+}
+
+/* Подписчики (following) общее */
+.followers-group {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    text-align: center; /* Расположение в блоке - по центру */
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    float: right;
+}
+
+/* Подписки (following) общее */
+.following {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    margin-right: 15%; /* Отступы справа */
+    margin-left: 0%; /* Отступы слева */
+    text-align: center; /* Расположение в блоке - по центру */
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    position: relative;
+    float: right;
+}
+
+
+/* P */
+.followers-following P {
+    margin-top: 10px; /* Отступы сверху */
+    margin-bottom: 2px; /* Отступы сверху */
+}
+
+/* A */
+.followers-following A {
+    color: RGB(0, 157, 224); /* Цвет текста ссылок */
+    text-decoration: none; /* Декорация текста ссылок */
+    /* font-size: 14px; */
+}
+
+/* Подписчики и подписки контейнер */
+.followers-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Расположить элементы в контейнере по центру */
+    background: RGB(248, 248, 248);
+    border-radius: 10px;
+}
+
+/* Подписчики и подписки контейнер содержимое? */
+.follower {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+    margin-left: 10px;
+    max-width: 65px;
+
+}
+
+/* Подписчики и подписки контейнер аватар */
+.follower-avatar {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #fff; /* Параметры рамки */
+    outline: solid 2px RGB(30, 30, 30);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: flex; /* Картинка по центру над текстом */
+}
+
+/* Подписчики и подписки контейнер аватар */
+.follower-avatar-temp {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: flex; /* Картинка по центру над текстом */
+}
+
+/* Подписчики и подписки контейнер кнопка */
+.follower-avatar-b button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 60px;
+    height: 93px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer; /* Изменить курсор при наведении */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+/* Фотографии -------------------------------------------------------- */
+
+/* Фотографии общее  */
+.photo {
+    flex-wrap: wrap;
+    justify-content: center; /* Расположить элементы в контейнере по центру */
+    display: grid;
+    grid-template-columns: auto minmax(100px, 150px) auto;
+    grid-gap: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Фотографии input */
+.photo input[type=file]::file-selector-button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 132px;
+    height: 20px;
+    position: relative;
+    bottom: -107px;
+    z-index: 9999;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+/* Фотографии input */
+.photo input[type="file"]::before {
+    position: absolute;
+    pointer-events: none;
+    content: "Add media";
+    left: 50px;
+    top: 2px;
+    color: white;
+}
+
+/* Фотографии кнопка */
+.photo input {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 150px;
+    height: 20px;
+    position: relative;
+    z-index: 9999;
+    cursor: pointer; /* Изменить курсор при наведении */
+    color: RGB(0, 157, 224);
+}
+
+/* Фотографии картинка */
+.photo1 img {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    position: relative;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    float: right;
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    border-radius: 5px;
+}
+
+/* Фотографии картинка */
+.photo2 img {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    position: relative;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    float: left;
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    border-radius: 5px;
+}
+
+/* Фотографии кнопка */
+.photo-button {
+    display: inline-flex;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* чтобы элементы выровнялись по вертикали */
+    align-items: center;
+    background: RGB(248, 248, 248);
+    border-radius: 10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+/* Фотографии контейнер кнопка */
+.photo-button button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 150px;
+    height: 40px;
+    margin-bottom: 10px;
+    cursor: pointer; /* Изменить курсор при наведении */
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* чтобы элементы выровнялись по вертикали */
+    align-items: center;
+}
+
+/* Фотографии кнопка другой пользователь */
+.photo-button-another-user {
+    display: inline-flex;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* чтобы элементы выровнялись по вертикали */
+    align-items: center;
+    background: RGB(248, 248, 248);
+    border-radius: 10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+/* Фотографии контейнер кнопка другой пользователь */
+.photo-button-another-user button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 150px;
+    height: 70px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    cursor: pointer; /* Изменить курсор при наведении */
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* чтобы элементы выровнялись по вертикали */
+    align-items: center;
+}
+
+/* Фотографии контейнер H1 другой пользователь */
+.photo-button-another-user H1 {
+
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+
+/* Подписаться на пользователя --------------------------------------- */
+
+/* Подписаться на пользователя общее */
+.follow-button {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    margin-right: 25%; /* Отступы справа */
+    margin-left: 25%; /* Отступы слева */
+    text-align:center; /* Расположение в блоке - по центру */
+}
+
+/* Подписаться на пользователя кнопка */
+.follow-button button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 258px;
+    height: 33px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+
+/* Отписаться от пользователя ---------------------------------------- */
+
+/* Отписаться от пользователя общее */
+.unfollow-button {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    margin-right: 25%; /* Отступы справа */
+    margin-left: 25%; /* Отступы слева */
+    text-align:center; /* Расположение в блоке - по центру */
+}
+
+/* Отписаться от пользователя кнопка */
+.unfollow-button button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: red;
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 258px;
+    height: 33px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+
+/* Создания записи в ленте ------------------------------------------- */
+
+/* Создания записи в ленте общее */
+.posts-create {
+    margin-top: 10px;
+    margin-right: 25%; /* Отступы справа */
+    margin-left: 25%; /* Отступы слева */
+    text-align:center; /* Расположение в блоке - по центру */
+}
+
+/* Создания записи в ленте поля ввода */
+.posts-create input {
+    text-align: center; /* Расположение текста в поле ввода - по центру */
+    font-family: 'Ubuntu Condensed', sans-serif; /* Шрифт */
+    width: 400px; /* Ширина */
+    height: 50px; /* Высота */
+}
+
+/* Создания записи в ленте кнопка */
+.posts-create button{
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 408px;
+    height: 33px;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+/* Создания записи в ленте поле ввода */
+.post-textarea {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    height: 50px;
+    width: 400px;
+    border-color: RGB(230, 230, 230);
+    border-radius: 3px;
+}
+
+
+/* Вывод записей в ленте --------------------------------------------- */
+
+/* Вывод записей в ленте общее */
+.posts-all {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    margin-right: 25%; /* Отступы справа */
+    margin-left: 25%; /* Отступы слева */
+    text-align:center; /* Расположение в блоке - по центру */
+    background: RGB(248, 248, 248); /* Цвет фона */
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+
+/* P */
+.posts-text {
+    margin-top: 0px;
+    margin-bottom: -10px;
+    margin-left: 27px;
+    margin-right: 40px;
+
+}
+
+/* Вывод записей в ленте общее P */
+.posts-text P {
+    border-left: 2px solid gray;
+    padding-left: 10px;
+    border-color: white;
+    white-space: pre-line;
+    text-align: justify;
+}
+
+/* H6 */
+.posts-all H6 {
+    color: RGB(150, 150, 150);
+}
+
+
+/* Вывод записей в ленте картинка */
+.posts-all-1 img {
+    width: calc(100% - 15px);
+    height: calc(100% - 10px);
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: 1px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: inline-block;
+}
+
+/* Вывод записей в ленте картинка */
+.posts-all-2 {
+    height: 50%;
+    display: flex;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    justify-content: space-around;
+}
+
+/* Вывод записей в ленте картинка */
+.posts-all-2 A {
+    overflow: hidden;
+    border-radius: 5px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: flex;
+    min-width: calc(100% / 2 - 5px);
+    max-width: calc(100% / 2 - 5px);
+}
+
+/* Вывод записей в ленте картинка */
+.posts-all-2 img {
+    overflow: hidden;
+    border-radius: 5px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+}
+
+/* Вывод записей в ленте картинка */
+.posts-all-3 {
+    display: flex;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    justify-content: space-around;
+}
+
+/* Вывод записей в ленте картинка */
+.posts-all-3 A {
+    overflow: hidden;
+    border-radius: 5px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: flex;
+    min-width: calc(100% / 3 - 5px);
+    max-width: calc(100% / 3 - 5px);
+}
+
+/* Вывод записей в ленте картинка */
+.posts-all-3 img {
+    overflow: hidden;
+    border-radius: 5px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+}
+
+/* Вывод записей в ленте картинка */
+.posts-all-4 {
+    display: flex;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    justify-content: space-around;
+}
+
+/* Вывод записей в ленте картинка */
+.posts-all-4 A {
+    overflow: hidden;
+    border-radius: 5px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: flex;
+    min-width: calc(100% / 4 - 5px);
+    max-width: calc(100% / 4 - 5px);
+}
+
+/* Вывод записей в ленте картинка */
+.posts-all-4 img {
+    overflow: hidden;
+    border-radius: 5px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+}
+
+/* Вывод записей в ленте кнопка удалить комментарий */
+.delete-post-b {
+    position: absolute;
+    display: flex;
+    left: calc(75% - 35px);
+    margin-top: 16px;
+    margin-left: -3px;
+}
+
+/* Вывод записей в ленте кнопка удалить комментарий */
+.delete-post-b-group {
+    position: absolute;
+    display: flex;
+    left: calc(75% - 35px);
+    margin-top: 16px;
+    margin-left: -30px;
+}
+
+
+/* Вывод записей в ленте кнопка удалить комментарий */
+.delete-post {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: RGB(220, 220, 220);
+    cursor: pointer;
+    z-index: 9999;
+    cursor: pointer;
+    display: flex;
+    color: white;
+    justify-content: space-evenly;
+    align-content: stretch;
+
+}
+
+/* Вывод записей в ленте кнопка удалить комментарий при наведении */
+.delete-post:hover {
+width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: red;
+    cursor: pointer;
+    z-index: 9999;
+    cursor: pointer;
+    display: flex;
+    color: white;
+    justify-content: space-evenly;
+    align-content: stretch;
+
+}
+
+/* Вывод записей в ленте кнопка удалить комментарий */
+.view-post-b {
+    position: absolute;
+    display: flex;
+    left: calc(75% - 35px);
+    margin-top: -30px;
+    margin-left: -3px;
+}
+
+/* Вывод записей в ленте кнопка удалить комментарий */
+.view-post-b-group {
+    position: absolute;
+    display: flex;
+    left: calc(75% - 35px);
+    margin-top: -37px;
+    margin-left: -3px;
+}
+
+/* Вывод записей в ленте кнопка удалить комментарий */
+.view-post {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: RGB(0, 157, 224);
+    cursor: pointer; /* Изменить курсор при наведении */
+    z-index: 9999;
+    justify-content: center;
+    cursor: pointer; /* Изменить курсор при наведении */
+    display: flex;
+    color: white;
+}
+
+.view-post P {
+    color: white;
+    text-align: center;
+    margin-top: 50%;
+    margin-left: 1px;
+    font-size: 10px;
+}
+
+
+/* Вывод записей в ленте кнопка удалить комментарий */
+.repost-btn button {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: RGB(220, 220, 220);
+    cursor: pointer;
+    z-index: 9999;
+    justify-content: space-evenly;
+    cursor: pointer;
+    display: flex;
+    color: white;
+    align-items: stretch;
+}
+
+/* Вывод записей в ленте кнопка удалить комментарий при наведении */
+.repost-btn:hover button {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: orange;
+    cursor: pointer;
+    z-index: 9999;
+    justify-content: space-evenly;
+    cursor: pointer;
+    display: flex;
+    color: white;
+    align-items: stretch;
+}
+
+/* Вывод записей в ленте кнопка удалить комментарий */
+.repost-btn {
+    position: absolute;
+    display: flex;
+    left: calc(75% - 35px);
+    margin-top: 16px;
+    margin-left: -3px;
+}
+
+
+/* Вывод записей в ленте репост -------------------------------------- */
+
+/* Вывод записей в ленте репост кнопка репост комментарий */
+.re-post-b {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+/* Вывод записей в ленте репост кнопка репост удалить комментарий */
+.re-post {
+    position: absolute;
+    display: flex;
+    left: calc(75% - 35px);
+    margin-top: -37px;
+    margin-left: -3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: RGB(220, 220, 220);
+    cursor: pointer; /* Изменить курсор при наведении */
+    justify-content: center;
+    cursor: pointer; /* Изменить курсор при наведении */
+    display: flex;
+    color: white;
+}
+
+/* Вывод записей в ленте репост кнопка репост комментарий при наведении */
+.re-post:hover {
+    position: absolute;
+    left: calc(75% - 35px);
+    margin-top: -37px;
+    margin-left: -3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: red;
+    cursor: pointer; /* Изменить курсор при наведении */
+    justify-content: center;
+    cursor: pointer; /* Изменить курсор при наведении */
+    display: flex;
+    color: white;
+    z-index: 0;
+}
+
+/* Репост поле ввода комментария общее */
+.re-post-comment {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* Репост поле ввода комментария поле ввода */
+.re-post-textarea {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    height: 27px;
+    width: calc(100% - 100px);
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border-color: RGB(230, 230, 230);
+    border-radius: 3px;
+    float: left;
+}
+
+/* Репост поле ввода комментария кнопка */
+.re-post-comment button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 80px;
+    height: 33px;
+    margin-bottom: 10px;
+    cursor: pointer; /* Изменить курсор при наведении */
+    float: right;
+}
+
+
+/* Вывод всех комментариев -------------------------------------- */
+
+/* Вывод всех комментариев контейнер содержимое? */
+.posts-all-container {
+
+    margin-top: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* Вывод всех комментариев аватар */
+.posts-all-container img {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #fff; /* Параметры рамки */
+    outline: solid 2px RGB(30, 30, 30);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Вывод всех комментариев A */
+.posts-all-container A {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    color: RGB(0, 157, 224);
+    display: inline-block;
+    vertical-align: middle; /* Чтобы выровнять текст по вертикали с картинкой */
+    margin-left: 1px;
+    margin-right: 1px;
+    text-decoration: none;
+}
+
+/* Вывод всех комментариев имя и дата */
+.posts-comment-user-date {
+    border-radius: 10px;
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Вывод всех комментариев имя и дата */
+.posts-comment-date {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 10px;
+    color: gray;
+}
+
+/* Вывод всех комментариев контейнер? еще один бля?) */
+.posts-all-comment {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(248, 248, 248);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+
+/* Страница подписчики и подписки ------------------------------------ */
+
+/* Страница подписчики и подписки контейнер содержимое? */
+.follower-list-all {
+    margin-right: 35%;
+    margin-left: 35%;
+    background: RGB(248, 248, 248);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+
+/* Страница подписчики и подписки контейнер аватар */
+.follower-list-all img {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #fff; /* Параметры рамки */
+    outline: solid 2px RGB(30, 30, 30);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Страница подписчики и подписки A */
+.follower-list-all A {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    color: RGB(0, 157, 224);
+    display: inline-block;
+    vertical-align: middle; /* Чтобы выровнять текст по вертикали с картинкой */
+    margin-left: 10px;
+    margin-right: 0px;
+    text-decoration: none;
+}
+
+
+/* Страница подписчики и подписки кнопка подписаться */
+.follower-list-all-follow-button {
+    float: right;
+    margin-top: 25px;
+    margin-right: 10px;
+}
+
+/* Страница подписчики и подписки кнопка */
+.follower-list-all-follow-button button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 100px;
+    height: 33px;
+    cursor: pointer; /* Изменить курсор при наведении */
+    float: right;
+}
+
+
+/* Подписаться на пользователя кнопка отписаться */
+.follower-list-all-unfollow-button {
+    float: right;
+    margin-top: 25px;
+    margin-right: 10px;
+}
+
+/* Отписаться от пользователя кнопка */
+.follower-list-all-unfollow-button button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: red;
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 100px;
+    height: 33px;
+    cursor: pointer; /* Изменить курсор при наведении */
+    float: right;
+}
+
+
+/* Страница фото и видео --------------------------------------------- */
+
+/* Страница фото и видео общее */
+.photo-page {
+    margin-right: 25%;
+    margin-left: 25%;
+    text-align: center; /* Горизонтальное выравнивание */
+}
+
+/* Страница фото и видео картинка */
+.photo-page img {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-right: 1px;
+    margin-left: 1px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: inline-block;
+}
+
+
+/* Страница просмотра фото ------------------------------------------- */
+
+/* Страница просмотра фото общее */
+.photo-show {
+    margin-right: 25%;
+    margin-left: 25%;
+    margin-bottom: 10px;
+    text-align: center; /* Горизонтальное выравнивание */
+    display: flex;
+    position: relative;
+    min-width: 50%;
+    justify-content: center;
+}
+
+/* Страница просмотра фото картинка */
+.photo-show img{
+    max-width: 100%;
+    min-width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: inline-block;
+
+}
+
+/* Страница просмотра фото невидимые кнопки на фото */
+.splitter-left,
+.splitter-right {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: absolute;
+    width: 50%;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: transparent;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+/* Страница просмотра фото невидимые кнопки на фото */
+.splitter-left {
+    left: 0;
+    height: calc(100% - 20px);
+}
+
+/* Страница просмотра фото невидимые кнопки на фото */
+.splitter-right {
+    right: 0;
+    height: calc(100% - 20px);
+}
+
+/* Страница просмотра фото кнопка удалить фото */
+.delete-photo {
+    margin-top: 10px;
+    margin-right: 10px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: red;
+    /*background-color: RGB(0, 157, 224);*/
+    cursor: pointer; /* Изменить курсор при наведении */
+    right: 0;
+    z-index: 9999;
+    justify-content: center;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+/* Страница просмотра фото кнопка удалить фото - крестик*/
+.delete-photo P {
+    color: white;
+    text-align: center;
+    margin-top: 0;
+    margin-left: -3px;
+}
+
+/* Страница просмотра фото кнопка удалить фото */
+.delete-photo-report {
+    margin-top: 10px;
+    margin-right: 10px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: red;
+    /*background-color: RGB(0, 157, 224);*/
+    cursor: pointer; /* Изменить курсор при наведении */
+    right: 0;
+    z-index: 9999;
+    justify-content: center;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+/* Страница просмотра фото кнопка удалить фото - крестик*/
+.delete-photo-report P {
+    color: white;
+    text-align: center;
+    margin-top: 0;
+}
+
+/* Страница просмотра фото кнопка удалить фото */
+.add-description-photo {
+    margin-top: 30px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: RGB(0, 157, 224);
+    cursor: pointer; /* Изменить курсор при наведении */
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    justify-content: center;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+/* Страница просмотра фото кнопка удалить фото - крестик*/
+.add-description-photo P {
+    color: white;
+    text-align: center;
+    margin-top: 0;
+    margin-left: -2px;
+}
+
+
+/* Страница просмотра фото слайдер ----------------------------------- */
+
+/* Страница просмотра фото слайдер контейнер содержимое? */
+.photo-slider {
+    margin-right: 25%;
+    margin-left: 25%;
+}
+
+/* Страница просмотра фото слайдер миниатюра */
+.photo-slider img {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #fff; /* Параметры рамки */
+    outline: solid 2px RGB(30, 30, 30);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Страница просмотра фото слайдер A */
+.photo-slider A {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    color: RGB(0, 157, 224);
+    display: inline-block;
+    vertical-align: middle; /* Чтобы выровнять текст по вертикали с картинкой */
+    text-decoration: none;
+}
+
+
+/* Страница просмотра фото слайдер A */
+.photo-slider SPAN {
+    border-right: 2px solid gray;
+    padding-right: 10px;
+    border-color: white;
+    border-height: 100px;
+}
+
+/* Страница просмотра фото слайдер миниатюра */
+.photo-slider-line img {
+    width: 73px;
+    height: 73px;
+    overflow: hidden;
+    border-radius: 2px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 2px;
+    margin-left: 2px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: inline-block;
+    outline: none;
+    border: none;
+}
+
+/* Страница просмотра фото слайдер миниатюра? */
+.photo-slider-line {
+    display: flex;
+    margin-right: 5px;
+    margin-left: 5px;
+    justify-content: center;
+}
+
+
+/* Страница просмотра фото лайки и дата ------------------------------ */
+
+/* Страница просмотра фото лайки и дата общее */
+.photo-like-date {
+    margin-left: 25%;
+    margin-right: 25%;
+    /* margin-bottom: 10px; */
+    background: RGB(248, 248, 248);
+    /* margin-top: 20px; */
+    border-radius: 10px;
+
+}
+
+/* Страница просмотра фото лайки и дата кнопки контейнер */
+.unlike-button,
+.like-button {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Страница просмотра фото лайки и дата кнопки текст */
+.unlike-button P,
+.like-button P {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    color: gray;
+}
+
+.unlike-button A,
+.like-button A {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    font-size: 16px;
+    color: RGB(0, 157, 224);
+    text-decoration: none;
+}
+
+/* Страница просмотра фото лайки и дата кнопки */
+.unlike-button button,
+.like-button button {
+    margin-top: 7px;
+    margin-left: 13px;
+    float: left;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    border-color: transparent;
+    background-color: transparent;
+    font-size: 16px;
+}
+
+/* Страница просмотра фото лайки и дата убрать лайк */
+.unlike-button button {
+    color: red;
+    cursor: pointer; /* Изменить курсор при наведении */
+
+}
+
+/* Страница просмотра фото лайки и дата поставить лайк */
+.like-button button {
+    color: RGB(0, 157, 224);
+    cursor: pointer; /* Изменить курсор при наведении */
+
+}
+
+
+/* Фото поле ввода описания ------------------------------------------ */
+
+/* Фото поле ввода описания общее */
+.photo-description {
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 70px;
+}
+
+/* Фото поле ввода описания поле ввода */
+.description-photo-textarea {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    height: 27px;
+    width: calc(100% - 100px);
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border-color: RGB(230, 230, 230);
+    border-radius: 3px;
+    float: left;
+}
+
+/* Фото поле ввода описания кнопка */
+.photo-description button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 80px;
+    height: 33px;
+    margin-bottom: 10px;
+    cursor: pointer; /* Изменить курсор при наведении */
+    float: right;
+}
+
+/* Фото поле ввода описания текст */
+.photo-description-text {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: center;
+}
+
+
+/* Фото поле ввода комментария --------------------------------------- */
+
+/* Фото поле ввода комментария общее */
+.photo-comment {
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 10px;
+    margin-bottom: 70px;
+}
+
+.photo-comment input {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    height: 27px;
+    width: calc(100% - 100px);
+    margin-bottom: 4px;
+    margin-right: 10px;
+    border-color: RGB(230, 230, 230);
+    border-radius: 3px;
+    float: left;
+    border: 1px solid RGB(230, 230, 230); /* Заменил два отдельных свойства border-color на одно свойство border */
+}
+
+/* Фото поле ввода комментария поле ввода */
+.comment-photo-textarea {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    height: 27px;
+    min-height: 27px;
+    width: calc(100% - 100px);
+    max-width: calc(100% - 100px);
+    min-width: calc(100% - 100px);
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border-color: RGB(230, 230, 230);
+    border-radius: 3px;
+    float: left;
+}
+
+/* Фото поле ввода комментария кнопка */
+.photo-comment button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 80px;
+    height: 33px;
+    margin-bottom: 10px;
+    cursor: pointer; /* Изменить курсор при наведении */
+    float: right;
+}
+
+/* Фото поле ввода комментария кнопка */
+#create-info {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 80px;
+    height: 66px;
+    margin-bottom: 10px;
+    cursor: pointer; /* Изменить курсор при наведении */
+    float: right;
+}
+
+
+/* Вывод всех комментариев -------------------------------------- */
+
+/* Вывод всех комментариев контейнер содержимое? */
+.photo-all-comment {
+    margin-right: 25%;
+    margin-left: 25%;
+    margin-top: 10px;
+    /* margin-bottom: 10px; */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+
+/* Вывод всех комментариев аватар */
+.photo-all-comment img {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #fff; /* Параметры рамки */
+    outline: solid 2px RGB(30, 30, 30);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Вывод всех комментариев A */
+.photo-all-comment A {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    color: RGB(0, 157, 224);
+    display: inline-block;
+    vertical-align: middle; /* Чтобы выровнять текст по вертикали с картинкой */
+    margin-left: 1px;
+    margin-right: 1px;
+    text-decoration: none;
+}
+
+/* Вывод всех комментариев имя и дата */
+.photo-comment-user-date {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    min-width: 80px;
+}
+
+/* Вывод всех комментариев имя и дата */
+.photo-comment-date {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 10px;
+    color: gray;
+}
+
+/* Вывод всех комментариев контейнер? еще один бля?) */
+.photo-all-comment {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(248, 248, 248);
+    border-radius: 10px;
+}
+
+/* Вывод всех комментариев P */
+.photo-all-comment P {
+    margin-right: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-left: 2px solid gray;
+    padding-left: 10px;
+    border-color: white;
+}
+
+/* Вывод всех комментариев P */
+#message-not-read {
+    display: flex;
+    margin-right: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-left: 2px solid gray;
+    padding-left: 10px;
+    border-color: red;
+    float: right;
+}
+
+
+/* Вывод всех комментариев кнопка удалить комментарий */
+.create-repost-short {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: RGB(220, 220, 220);
+    cursor: pointer;
+    z-index: 9999;
+    justify-content: space-evenly;
+    cursor: pointer;
+    display: flex;
+    color: white;
+    align-items: stretch;
+}
+
+/* Вывод всех комментариев кнопка удалить комментарий при наведении */
+.create-repost-short:hover {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: orange;
+    cursor: pointer;
+    z-index: 9999;
+    justify-content: space-evenly;
+    cursor: pointer;
+    display: flex;
+    color: white;
+    align-items: stretch;
+}
+
+/* Вывод всех комментариев кнопка удалить комментарий */
+.delete-comment {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: RGB(220, 220, 220);
+    cursor: pointer; /* Изменить курсор при наведении */
+    z-index: 9999;
+    justify-content: center;
+    cursor: pointer; /* Изменить курсор при наведении */
+    display: flex;
+    color: white;
+}
+
+/* Вывод всех комментариев кнопка удалить комментарий при наведении */
+.delete-comment:hover {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: red;
+    cursor: pointer; /* Изменить курсор при наведении */
+    z-index: 9999;
+    justify-content: center;
+    cursor: pointer; /* Изменить курсор при наведении */
+    display: flex;
+    color: white;
+}
+
+/* Вывод всех комментариев кнопка удалить комментарий */
+.delete-comment-pluse {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: RGB(220, 220, 220);
+    cursor: pointer; /* Изменить курсор при наведении */
+    z-index: 9999;
+    justify-content: center;
+    cursor: pointer; /* Изменить курсор при наведении */
+    display: flex;
+    color: white;
+}
+
+/* Вывод всех комментариев кнопка удалить комментарий при наведении */
+.delete-comment-pluse:hover {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: RGB(0, 157, 224);
+    cursor: pointer; /* Изменить курсор при наведении */
+    z-index: 9999;
+    justify-content: center;
+    cursor: pointer; /* Изменить курсор при наведении */
+    display: flex;
+    color: white;
+}
+
+/* Вывод всех комментариев форма*/
+.photo-all-comment form {
+    position: absolute;
+    left: calc(75% - 50px);
+    border-left: 2px solid gray;
+    padding-left: 10px;
+    border-color: white;
+}
+
+
+/* Поле ввода поиска ------------------------------------------------- */
+
+/* Поле ввода поиска общее */
+.search_field {
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 10px;
+}
+
+/* Поле ввода поиска поле ввода */
+.comment-photo-textarea {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    height: 27px;
+    width: calc(100% - 100px);
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border-color: RGB(230, 230, 230);
+    border-radius: 3px;
+    float: left;
+}
+
+/* Поле ввода поиска кнопка */
+.search_field button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 80px;
+    height: 33px;
+    margin-bottom: 10px;
+    cursor: pointer; /* Изменить курсор при наведении */
+    float: right;
+}
+
+/* Поле ввода поиска A */
+.search_field A {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    color: RGB(0, 157, 224); /* Цвет текста ссылок */
+    text-decoration: none; /* Декорация текста ссылок */
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* Вывод сообщений ---------------------------------------------- */
+
+/* Вывод всех комментариев контейнер содержимое? */
+.message-all-comment {
+
+    margin-top: 10px;
+    /* margin-bottom: 10px; */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+
+/* Вывод всех комментариев аватар */
+.message-all-comment img {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #fff; /* Параметры рамки */
+    outline: solid 2px RGB(30, 30, 30);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Вывод всех комментариев A */
+.message-all-comment A {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    color: RGB(0, 157, 224);
+    display: inline-block;
+    vertical-align: middle; /* Чтобы выровнять текст по вертикали с картинкой */
+    margin-left: 1px;
+    margin-right: 1px;
+    text-decoration: none;
+}
+
+/* Вывод всех комментариев имя и дата */
+.message-comment-user-date {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    min-width: 80px;
+}
+
+/* Вывод всех комментариев имя и дата */
+.message-comment-date {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 10px;
+    color: gray;
+}
+
+/* Вывод всех комментариев контейнер? еще один бля?) */
+.message-all-comment {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(248, 248, 248);
+    border-radius: 10px;
+}
+
+/* Вывод всех комментариев P */
+.message-all-comment P {
+    margin-right: 65px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-left: 2px solid gray;
+    padding-left: 10px;
+    border-color: white;
+
+
+    white-space: pre-line;
+    text-align: justify;
+}
+
+/* Вывод всех комментариев форма*/
+.message-all-comment form {
+    position: absolute;
+    left: calc(75% - 50px);
+    border-left: 2px solid gray;
+    padding-left: 10px;
+    border-color: white;
+}
+
+/* Вывод всех комментариев кнопка удалить комментарий */
+.message-delete-comment {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: RGB(220, 220, 220);
+    cursor: pointer; /* Изменить курсор при наведении */
+    z-index: 9999;
+    justify-content: center;
+    cursor: pointer; /* Изменить курсор при наведении */
+    display: flex;
+    color: white;
+}
+
+/* Вывод всех комментариев кнопка удалить комментарий при наведении */
+.message-delete-comment:hover {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: red;
+    cursor: pointer; /* Изменить курсор при наведении */
+    z-index: 9999;
+    justify-content: center;
+    cursor: pointer; /* Изменить курсор при наведении */
+    display: flex;
+    color: white;
+}
+
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* Вывод фото в переписке */
+.message-photo {
+    font-family: 'Ubuntu Condensed', sans-serif;
+
+    text-align:center; /* Расположение в блоке - по центру */
+    background: RGB(248, 248, 248);
+    border-radius: 10px;
+    margin-top: -15px;
+}
+
+/* Вывод записей в ленте картинка */
+.message-photo-1 img {
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: 0px;
+    margin-top: 20px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: inline-block;
+}
+
+/* Фотографии input */
+.posts-create input[type=file]::file-selector-button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 132px;
+    height: 20px;
+    position: relative;
+    bottom: -107px;
+    z-index: 9999;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+/* Фотографии input */
+.posts-create input[type="file"]::before {
+    position: absolute;
+    pointer-events: none;
+    content: "Photo";
+    left: 10px;
+    top: 9px;
+    color: white;
+}
+
+/* Фотографии кнопка */
+.posts-create input {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 50px;
+    height: 33px;
+    position: relative;
+    z-index: 9999;
+    cursor: pointer; /* Изменить курсор при наведении */
+    color: RGB(0, 157, 224);
+    float: right;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.posts-create.file-selected input[type="file"]::before {
+    /* Стили для псевдоэлемента ::before, если файл выбран */
+    content: '    ✓';
+}
+
+.posts-create input[type="file"]::before {
+    /* Стили по умолчанию для псевдоэлемента ::before */
+    content: 'Photo';
+}
+
+.posts-create-message.file-selected input[type="file"]::before {
+    /* Стили для псевдоэлемента ::before, если файл выбран */
+    content: '    ✓';
+}
+
+.posts-create-message input[type="file"]::before {
+    /* Стили по умолчанию для псевдоэлемента ::before */
+    content: 'Photo';
+}
+
+/* Фотографии кнопка */
+.post-button {
+    display: inline-flex;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* чтобы элементы выровнялись по вертикали */
+    border-radius: 10px;
+}
+
+/* Фотографии контейнер кнопка */
+.post-button button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 130px;
+    height: 33px;
+
+    cursor: pointer; /* Изменить курсор при наведении */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* чтобы элементы выровнялись по вертикали */
+    align-items: center;
+    float: right;
+}
+
+.post-create-textarea {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    height: 27px;
+    min-height: 27px;
+    width: calc(100% - 207px);
+    max-width: calc(100% - 207px);
+    min-width: calc(100% - 207px);
+    /* margin-bottom: 10px; */
+    border-color: RGB(230, 230, 230);
+    border-radius: 3px;
+    float: left;
+}
+
+.add_message_info {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    background: RGB(248, 248, 248);
+    border: 5px solid #fff;
+    border-radius: 20px;
+    /* box-shadow: 5px 5px 0 #fff inset, -5px -5px 0 #fff inset; */
+    height: 20px;
+
+
+}
+
+.unfollow-btn button {
+    margin-top: -10px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: red;
+    color: white;
+    border-color: red;
+    border-radius: 3px;
+    border: 0px;
+    width: 70px;
+    height: 33px;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+.follow-btn button {
+    margin-top: -10px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 70px;
+    height: 33px;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+.info-btn button {
+    margin-top: -10px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 70px;
+    height: 33px;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+.info-btn-close button {
+    margin-top: -10px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: red;
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 70px;
+    height: 33px;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+.message-btn button {
+    margin-top: -10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 150px;
+    height: 33px;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+.message-btn-close button {
+    margin-top: -10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: red;
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 150px;
+    height: 33px;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+.admin-block {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+
+}
+
+.block-btn button {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: red;
+    color: white;
+    border-color: red;
+    border-radius: 3px;
+    border: 0px;
+    width: 60px;
+    height: 33px;
+    cursor: pointer; /* Изменить курсор при наведении */
+    margin-right: 15px;
+}
+
+.admin-btn button {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: red;
+    color: white;
+    border-radius: 3px;
+    border: 0px;
+    width: 60px;
+    height: 33px;
+    cursor: pointer; /* Изменить курсор при наведении */
+    margin-left: 15px;
+
+}
+
+
+.profile-info {
+    margin-top: 20px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    margin-right: 25%; /* Отступы справа */
+    margin-left: 25%; /* Отступы слева */
+    text-align:center; /* Расположение в блоке - по центру */
+    padding: 20px;
+    background-color: RGB(248, 248, 248);
+    border-radius: 10px;
+}
+
+.profile-info H3 {
+    margin-top: 0px;
+}
+
+.profile-info A {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    color: RGB(0, 157, 224);
+    display: inline-block;
+    vertical-align: middle; /* Чтобы выровнять текст по вертикали с картинкой */
+    margin-left: 1px;
+    margin-right: 1px;
+    text-decoration: none;
+}
+
+/* Ввод статуса форма */
+.status {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    margin: 0 auto; /* Добавьте эту строку */
+    margin-top: 10px;
+    margin-bottom: -15px;
+    padding: 5px;
+    background-color: RGB(248, 248, 248);
+    border-radius: 15px;
+    min-width: 250px;
+    max-width: 250px;
+}
+
+/* Ввод статуса форма */
+.status-textarea {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    padding-left: 10px;
+    border-color: white;
+    border-radius: 10px;
+    width: calc(100% - 40px);
+    max-width: calc(100% - 40px);
+    min-width: calc(100% - 40px);
+    height: 16px;
+    min-height: 16px;
+    margin-bottom: -4px;
+}
+
+.set-status {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: RGB(220, 220, 220);
+    cursor: pointer; /* Изменить курсор при наведении */
+    z-index: 9999;
+    justify-content: center;
+    cursor: pointer; /* Изменить курсор при наведении */
+    display: flex;
+    color: white;
+    float: right;
+}
+
+.set-status:hover {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: red;
+    cursor: pointer; /* Изменить курсор при наведении */
+    z-index: 9999;
+    justify-content: center;
+    cursor: pointer; /* Изменить курсор при наведении */
+    display: flex;
+    color: white;
+    float: right;
+}
+
+.triangle {
+    margin: 0 auto; /* Добавьте эту строку */
+    margin-top: 13px;
+    margin-bottom: -30px;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 0px solid transparent;
+    border-top: 15px solid RGB(248, 248, 248);
+    transform: translateX(-60px); /* Сдвиг на 100 пикселей влево относительно центра */
+}
+
+.status P {
+    color: gray;
+    width: calc(100% - 0px);
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: -40px;
+
+}
+
+.status-block {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.status-block form {
+    float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Вывод всех комментариев -------------------------------------- */
+
+
+.dialog-and-message {
+    display: flex;
+}
+
+/* Вывод всех комментариев контейнер содержимое? */
+.all-dialog-list {
+    margin-top: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* Вывод всех комментариев аватар */
+#not-read-message {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #fff; /* Параметры рамки */
+    outline: solid 2px red;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Вывод всех комментариев аватар */
+.all-dialog-list img {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #fff; /* Параметры рамки */
+    outline: solid 2px RGB(30, 30, 30);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Вывод всех комментариев A */
+.all-dialog-list A {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    color: RGB(0, 157, 224);
+    display: inline-block;
+    vertical-align: middle; /* Чтобы выровнять текст по вертикали с картинкой */
+    margin-left: 1px;
+    margin-right: 1px;
+    text-decoration: none;
+}
+
+.all-dialog-list {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(248, 248, 248);
+    border-radius: 10px;
+}
+
+
+.container {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    display: flex;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.container H3 {
+    margin-left: 10px;
+}
+
+.left-container {
+    flex: 1;
+    margin-right: 10px;
+    margin-left: 5px;
+
+  /* Стили для левого контейнера */
+}
+
+.right-container {
+    flex: 2.5;
+    /* max-width: 500px; */
+    max-width: 70%;
+
+  /* Стили для правого контейнера */
+}
+
+#message_bg {
+    width: 100%;
+    height: auto;
+}
+
+/* Вывод записей в ленте общее */
+.posts-all-message {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    text-align:center; /* Расположение в блоке - по центру */
+    background: RGB(248, 248, 248); /* Цвет фона */
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+/* Создания записи в ленте общее */
+.posts-create-message {
+
+    margin-right: 25%;
+    margin-left: 25%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    position: fixed;
+    background: RGB(248, 248, 248);
+    border-radius: 10px;
+
+    bottom: 0;
+    padding: 10px;
+    width: 48%;
+}
+
+/* Фотографии input */
+.posts-create-message input[type=file]::file-selector-button {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 132px;
+    height: 20px;
+    position: relative;
+    bottom: -107px;
+    z-index: 9999;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+/* Фотографии input */
+.posts-create-message input[type="file"]::before {
+    position: absolute;
+    pointer-events: none;
+    content: "Photo";
+    left: 10px;
+    top: 9px;
+    color: white;
+}
+
+/* Фотографии кнопка */
+.posts-create-message input {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 50px;
+    height: 33px;
+    position: relative;
+    z-index: 9999;
+    cursor: pointer; /* Изменить курсор при наведении */
+    color: RGB(0, 157, 224);
+    float: right;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Вывод всех комментариев контейнер содержимое? */
+.message-dialog-user {
+
+    margin-top: 2px;
+    margin-bottom: -7px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+
+}
+
+
+/* Вывод всех комментариев аватар */
+.message-dialog-user img {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #fff; /* Параметры рамки */
+    outline: solid 2px RGB(30, 30, 30);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    object-fit: cover; /* Сохранить пропорции изображения */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Вывод всех комментариев A */
+.message-dialog-user A {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    color: RGB(0, 157, 224);
+    display: inline-block;
+    vertical-align: middle; /* Чтобы выровнять текст по вертикали с картинкой */
+    margin-left: 1px;
+    margin-right: 1px;
+    text-decoration: none;
+}
+
+/* Вывод всех комментариев имя и дата */
+.message-comment-user-date {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    min-width: 80px;
+}
+
+/* Вывод всех комментариев имя и дата */
+.message-comment-date {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 10px;
+    color: gray;
+}
+
+/* Вывод всех комментариев контейнер? еще один бля?) */
+.message-all-comment {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(248, 248, 248);
+    border-radius: 10px;
+}
+
+/* Вывод всех комментариев P */
+.message-all-comment P {
+    margin-right: 65px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-left: 2px solid gray;
+    padding-left: 10px;
+    border-color: white;
+    white-space: pre-line;
+    text-align: justify;
+}
+
+.delete-dialog {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: red;
+    cursor: pointer; /* Изменить курсор при наведении */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; /* Изменить курсор при наведении */
+    display: flex;
+    color: white;
+    float: right;
+    position: absolute;
+    left: calc(75% - 38px);
+    top: 85px;
+}
+
+
+/* Ввод статуса форма */
+.security-code {
+    margin-left: calc(50% - 50px);
+    margin-right: calc(50% - 50px);
+    font-family: 'Ubuntu Condensed', sans-serif;
+    padding-left: 10px;
+    border-color: gray;
+    border-radius: 5px;
+    width: 100px;
+    height: 60px;
+    margin-bottom: -4px;
+    font-size: 50px;
+
+}
+
+/* Регистрация и логин кнопка */
+#code-button {
+    margin-top: 10px;
+    margin-left: calc(50% - 50px);
+    margin-right: calc(50% - 50px);
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: RGB(0, 157, 224);
+    color: white;
+    border-color: RGB(0, 157, 224);
+    border-radius: 3px;
+    border: 0px;
+    width: 115px;
+    height: 33px;
+    cursor: pointer; /* Изменить курсор при наведении */
+}
+
+.invisible-rectangle {
+    display: flex;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+    height: 1px;
+    background-color: transparent;
+    visibility: hidden;
+}
+
+/* Logo */
+.logo P {
+    position: absolute;
+    font-size: 30px;
+    font-family: 'cinematografica', sans-serif;
+    font-weight: 300;
+    top: 0px;
+    left: 20px;
+    color: white;
+    letter-spacing: 2px;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+    border-radius: 20px;
+    background-color: red;
+    color: white;
+    top: -11px;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+
+}
+
+.logo-large {
+    display: flex;
+    font-family: 'cinematografica', sans-serif;
+    text-align:center; /* Расположение в блоке - по центру */
+    margin-bottom: 10px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-around;
+}
+
+/* Logo */
+.logo-large P {
+    font-size: 90px;
+    font-family: 'cinematografica', sans-serif;
+    font-weight: 300;
+    top: 0px;
+    left: 20px;
+    color: white;
+    letter-spacing: 2px;
+    padding-left: 39px;
+    padding-right: 39px;
+    padding-top: 24px;
+    padding-bottom: 20px;
+    border-radius: 60px;
+    background-color: red;
+    color: white;
+    top: -12px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+
+
+}

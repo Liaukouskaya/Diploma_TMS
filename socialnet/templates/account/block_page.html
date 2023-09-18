@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block menu2 %}
+
+    <div class="menu2">
+        <a href="{% url 'logout_page' %}">ВЫХОД</a>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="avatar-another-user">
+        <img src="{{ person.avatar.url }}">
+    </div>
+
+    <div class="name-admin">
+        <h3>{{ person.first_name }} {{ person.last_name }}</h3>
+        {% if person.user_admin %}
+            <span>&nbsp;Admin&nbsp;</span>
+        {% endif %}
+    </div>
+
+    <div class="error">
+        <h3>Аккаунт заблокирован!</h3>
+        <p>Обратитесь к администрации для справки.</p>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,597 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+    {% if group.user == request.user or request.user.id in team %}
+
+        <div class="avatar">
+
+            <form method="post" enctype="multipart/form-data" id="myForm">
+                {% csrf_token %}
+                <input type="file" name="nev_avatar" onchange="document.getElementById('myForm').submit();">
+            </form>
+            <img src="{{ group.avatar.url }}">
+
+        </div>
+
+    {% else %}
+
+        <div class="avatar-another-user">
+            <img src="{{ group.avatar.url }}">
+        </div>
+
+    {% endif %}
+
+
+    <div class="standard">
+        <h3>{{ group.first_name }}</h3>
+    </div>
+
+    <div class="followers-following-container">
+
+        <div class="followers-group">
+
+            <div class="followers-container">
+
+            {% for follower in followers_left %}
+                <div class="follower">
+                    <a href="/user-{{ follower.profile_id }}" class="follower-link">
+                    <img src="{{ follower.avatar.url }}" class="follower-avatar">
+
+                    {% if follower.first_name|length < 12 %}
+                        <span class="follower-name">{{ follower.first_name }}</span></a>
+                    {% else %}
+                        <span class="follower-name">{{ follower.first_name|slice:":8" }}..</span></a>
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+
+                <div class="follower-avatar-b">
+                    <form action="/groups/group-{{ group.profile_id }}/followers">
+                        <button>Follower<h1>{{ followers_count }}</h1></button><br>
+                    </form>
+
+                </div>
+
+            {% for follower in followers_right %}
+
+                {% if follower %}
+                <div class="follower">
+                    <a href="/user-{{ follower.profile_id }}" class="follower-link">
+                    <img src="{{ follower.avatar.url }}" class="follower-avatar">
+
+                    {% if follower.first_name|length < 12 %}
+                        <span class="follower-name">{{ follower.first_name }}</span></a>
+                    {% else %}
+                        <span class="follower-name">{{ follower.first_name|slice:":8" }}..</span></a>
+                    {% endif %}
+
+                </div>
+                {% else %}
+                <div class="follower">
+                    <img src="/media/photo/temp-photo.jpg" class="follower-avatar-temp">
+                </div>
+                {% endif %}
+            {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% if group.user == request.user or request.user.id in team %}
+
+        <div class="photo">
+            <div class="photo1">
+
+                {% for photo in temp_left %}
+                    <img src="/media/photo/temp-photo.jpg">
+                {% endfor %}
+
+                {% for photo in all_photo_left %}
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}" ></a>
+                {% endfor %}
+
+            </div>
+
+            <div class="photo-button">
+
+                <form action="group-{{ group.profile_id }}/photo">
+                    <button>All media: {{ photo_count }}</button>
+                </form>
+
+            <form method="post" enctype="multipart/form-data" id="nev_photo-myForm">
+                {% csrf_token %}
+                <input type="file" name="nev_photo" onchange="document.getElementById('nev_photo-myForm').submit();" multiple>
+            </form>
+
+            </div>
+
+            <div class="photo2">
+
+                {% for photo in all_photo_right %}
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}" ></a>
+                {% endfor %}
+
+                {% for photo in temp_right %}
+                    <img src="/media/photo/temp-photo.jpg">
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    {% else %}
+
+        <div class="photo">
+            <div class="photo1">
+
+                {% for photo in temp_left %}
+                    <img src="/media/photo/temp-photo.jpg">
+                {% endfor %}
+
+                {% for photo in all_photo_left %}
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}" ></a>
+                {% endfor %}
+
+            </div>
+
+            <div class="photo-button-another-user">
+
+                <form action="group-{{ group.profile_id }}/photo">
+                    <button>All media:<h1>{{ photo_count }}</h1></button>
+                </form>
+
+
+            </div>
+
+            <div class="photo2">
+
+                {% for photo in all_photo_right %}
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}" ></a>
+                {% endfor %}
+
+                {% for photo in temp_right %}
+                    <img src="/media/photo/temp-photo.jpg">
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    {% endif %}
+
+    {% if group_info %}
+
+    <div class="profile-info">
+        <h3>Описание вашего профиля:</h3>
+            {{ group_info }}
+    </div>
+
+        {% if group.user == request.user or request.user.id in team %}
+
+        <div class="photo-comment">
+
+            <form method="post">
+                {% csrf_token %}
+                {{ comment_form.comment }}
+                <button type="submit" name="submit_button" value="create_info">Сохранить</button>
+            </form>
+
+        </div>
+
+        {% endif %}
+
+    <div class="add_message_info">
+
+        {% if follower %}
+
+            <div class="unfollow-btn">
+                <form method="post">
+                    {% csrf_token %}
+                <button type="submit" name="submit_button" value="unfollow">Отписка</button>
+                </form>
+            </div>
+
+        {% else %}
+
+            <div class="follow-btn">
+                <form method="post">
+                    {% csrf_token %}
+                <button type="submit" name="submit_button" value="follow">Подписка</button>
+                </form>
+            </div>
+
+        {% endif %}
+
+
+            <div class="message-btn">
+                <form method="post">
+                    {% csrf_token %}
+                <button type="submit" name="submit_button" value="send_message">Сообщение</button>
+                </form>
+            </div>
+
+            <div class="info-btn-close">
+                <form method="post">
+                    {% csrf_token %}
+                <button type="submit" name="submit_button" value="close_info">О группе</button>
+                </form>
+            </div>
+    </div>
+
+    {% else %}
+
+    <div class="add_message_info">
+
+        {% if follower %}
+
+            <div class="unfollow-btn">
+                <form method="post">
+                    {% csrf_token %}
+                <button type="submit" name="submit_button" value="unfollow">Отписка</button>
+                </form>
+            </div>
+
+        {% else %}
+
+            <div class="follow-btn">
+                <form method="post">
+                    {% csrf_token %}
+                <button type="submit" name="submit_button" value="follow">Подписка</button>
+                </form>
+            </div>
+
+        {% endif %}
+
+
+            <div class="message-btn">
+                <form method="post">
+                    {% csrf_token %}
+                <button type="submit" name="submit_button" value="send_message">Сообщение</button>
+                </form>
+            </div>
+
+            <div class="info-btn">
+                <form method="post">
+                    {% csrf_token %}
+                <button type="submit" name="submit_button" value="show_info">О группе</button>
+                </form>
+            </div>
+    </div>
+
+    {% endif %}
+
+    <div class="invisible-rectangle"></div>
+
+    {% if group.user == request.user or request.user.id in team %}
+
+        <div class="standard">
+            <h3>Добавить пост в ленту:</h3>
+        </div>
+
+        <div class="posts-create">
+
+            <div class="post-button">
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ posts_form.content }}
+                <button id="summbit-button" type="submit" name="submit_button" value="create_post">Создать запись</button>
+                <input id="photo-input" type="file" name="photo_post" multiple onchange="changeColor(this)">
+
+            </form>
+
+            </div>
+        </div>
+
+        <script>
+        function changeColor(input) {
+            var fileInput = input.files[0]; // Получаем выбранный файл
+            var photoContainer = document.querySelector('.posts-create');
+
+            if (fileInput) {
+                photoContainer.classList.add('file-selected'); // Добавляем класс, если выбран файл
+            } else {
+                photoContainer.classList.remove('file-selected'); // Удаляем класс, если файл не выбран
+            }
+        }
+        </script>
+
+    {% else %}
+
+        <div class="standard">
+        <h3>Лента группы:</h3>
+    </div>
+
+    {% endif %}
+
+        {% for post in post_and_repost %}
+
+        <div class="posts-all">
+
+            {% if group.user == request.user or request.user.id in team %}
+
+            <div class="repost-btn">
+                <form action="/profile_page/post-{{ post.id }}/group_repost">
+                    <button class="delete-post" type="submit">↩</button>
+                </form>
+            </div>
+
+
+            <div class="delete-post-b-group">
+                <form method="post">
+                    {% csrf_token %}
+                    <button class="delete-post" type="submit" name="submit_button" value="posts-delete">✕</button>
+                    <input type="hidden" name="post_id" value="{{ post.id }}">
+                </form>
+            </div>
+
+
+                <div class="repost-btn">
+                    <form action="/profile_page/post-{{ post.id }}/group_repost">
+                        <button class="delete-post" type="submit">↩</button>
+                    </form>
+                </div>
+
+            {% else %}
+
+                <div class="delete-post-b-group">
+                    <form action="/profile_page/report/group_post-{{ post.id }}">
+                        <button class="delete-post" type="submit">!</button>
+                    </form>
+                </div>
+
+                <div class="repost-btn">
+                    <form action="/profile_page/post-{{ post.id }}/group_repost">
+                        <button class="delete-post" type="submit">↩</button>
+                    </form>
+                </div>
+
+            {% endif %}
+
+            <div class="posts-all-container">
+                    <a href="/groups/group-{{ post.author.profile_id }}"><img src="{{ post.author.avatar.url }}"></a>
+                <div class="posts-comment-user-date">
+                    <a href="/groups/group-{{ post.author.profile_id }}">{{ post.author }}</a>
+                    <span class="posts-comment-date">{{ post.date }}</span>
+                </div>
+            </div>
+
+            {% if post.photo_post.all|length == 1 %}
+                <div class="posts-all-1">
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ post.photo_post.all.first.id }}">
+                        <img src="{{ post.photo_post.all.first.photo.url }}"></a>
+                </div>
+            {% elif post.photo_post.all|length == 2 %}
+                <div class="posts-all-2">
+                    {% for photo in post.photo_post.all %}
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 3 %}
+                <div class="posts-all-1">
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ post.photo_post.all.first.id }}">
+                        <img src="{{ post.photo_post.all.first.photo.url }}"></a>
+                </div>
+                <div class="posts-all-2">
+                    {% for photo in post.photo_post.all|slice:"1:" %}
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 4 %}
+                <div class="posts-all-1">
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ post.photo_post.all.first.id }}">
+                        <img src="{{ post.photo_post.all.first.photo.url }}"></a>
+                </div>
+                <div class="posts-all-3">
+                    {% for photo in post.photo_post.all|slice:"1:" %}
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 5 %}
+                <div class="posts-all-1">
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ post.photo_post.all.first.id }}">
+                        <img src="{{ post.photo_post.all.first.photo.url }}"></a>
+                </div>
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:"1:" %}
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 6 %}
+                <div class="posts-all-2">
+                    {% for photo in post.photo_post.all|slice:":2" %}
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:"2:" %}
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 7 %}
+                <div class="posts-all-3">
+                    {% for photo in post.photo_post.all|slice:":3" %}
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:"3:" %}
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length == 8 %}
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:":4" %}
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:"4:" %}
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+            {% elif post.photo_post.all|length > 8 %}
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:":4" %}
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+                <div class="posts-all-4">
+                    {% for photo in post.photo_post.all|slice:"4:8" %}
+                    <a href="/groups/group-{{ group.profile_id }}/photo/show-{{ photo.id }}">
+                        <img src="{{ photo.photo.url }}"></a>
+                    {% endfor %}
+                </div>
+                    <span class="posts-comment-date">+ еще {{ post.photo_post.all|slice:"8:"|length }} фото в посте</span>
+            {% endif %}
+
+                <div class="posts-text">
+                    <p>{{ post.content }}</p>
+                </div>
+
+
+            {% if request.user in post.like_post.all %}
+
+                <div class="unlike-button">
+                    <form method="post">
+                        {% csrf_token %}
+                    <button type="submit" name="submit_button" value="set_unlike">❤&nbsp;&nbsp;{{ post.like_post.all|length }}</button>
+                        <input type="hidden" name="post_id" value="{{ post.id }}">
+                    </form>
+                    <p>&nbsp;</p>
+                </div>
+
+            {% else %}
+
+                <div class="like-button">
+                    <form method="post">
+                        {% csrf_token %}
+                    <button type="submit" name="submit_button" value="set_like">❤&nbsp;&nbsp;{{ post.like_post.all|length }}</button>
+                        <input type="hidden" name="post_id" value="{{ post.id }}">
+                    </form>
+                    <p>&nbsp;</p>
+
+                </div>
+
+            {% endif %}
+
+                <div class="view-post-b">
+                    <form action="/groups/group-{{ group.profile_id }}/post-{{ post.id }}">
+                        <button class="view-post"><p>➤</p></button>
+                    </form>
+                </div>
+
+        </div>
+
+
+        {% for comment in post.comments %}
+
+            {% if group.user == comment.author.user %}
+
+                <div class="photo-all-comment">
+                    <a href="/groups/group-{{ post.author.profile_id }}"><img src="{{ comment.author.avatar.url }}"></a>
+                        <div class="photo-comment-user-date">
+                            <a href="/groups/group-{{ post.author.profile_id }}">{{ comment.author }}</a>
+                            <span class="photo-comment-date">{{ comment.date }}</span>
+                        </div>
+                    <p>{{ comment.comment }}</p>
+
+                    {% if request.user == comment.author.user or request.user.id in team %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <button class="delete-comment" type="submit" name="submit_button" value="comment-delete-author">✕</button>
+                        <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                    </form>
+
+                    {% endif %}
+
+                </div>
+
+            {% else %}
+
+                <div class="photo-all-comment">
+                    <a href="/user-{{ comment.author.profile_id }}"><img src="{{ comment.author.avatar.url }}"></a>
+                        <div class="photo-comment-user-date">
+                            <a href="/user-{{ comment.author.profile_id }}">{{ comment.author }}</a>
+                            <span class="photo-comment-date">{{ comment.date }}</span>
+                        </div>
+                    <p>{{ comment.comment }}</p>
+
+                {% if request.user == comment.author.user %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <button class="delete-comment" type="submit" name="submit_button" value="comment-delete">✕</button>
+                        <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                    </form>
+
+                {% endif %}
+
+                {% if group.user == request.user or request.user.id in team %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <button class="delete-comment" type="submit" name="submit_button" value="comment-delete">✕</button>
+                        <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                    </form>
+
+                {% endif %}
+
+                </div>
+
+            {% endif %}
+
+            {% endfor %}
+
+            <div class="photo-comment">
+
+                {% if group.user == request.user or request.user.id in team %}
+
+                <form method="post">
+                    {% csrf_token %}
+                    {{ comment_form.comment }}
+                    <button type="submit" name="submit_button" value="create_comment_group">Добавить</button>
+                    <input type="hidden" name="post_id" value="{{ post.id }}">
+                </form>
+
+                {% else %}
+
+                <form method="post">
+                    {% csrf_token %}
+                    {{ comment_form.comment }}
+                    <button type="submit" name="submit_button" value="create_comment">Добавить</button>
+                    <input type="hidden" name="post_id" value="{{ post.id }}">
+                </form>
+
+                {% endif %}
+
+            </div>
+
+            <div class="invisible-rectangle"></div>
+
+        {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'account/css/main.css' %}">
+
+    {% block scripts %}
+      <script src="{% static 'account/js/account.js' %}"></script>
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <div class="background">
+        <img src="/media/background.jpg">
+    </div>
+
+    <div class="logo">
+        <p>switter</p>
+    </div>
+
+
+    {% if request.user.is_authenticated %}
+
+        <div class="menu">
+
+            <a id="msg" href="{% url 'profile_page' %}">ПРОФИЛЬ</a>
+            <a href="{% url 'groups' %}">СООБЩЕСТВА</a>
+            <a href="{% url 'news' %}">НОВОСТИ</a>
+
+            {% if not_read_message %}
+                <a href="{% url 'all_messages' %}">СООБЩЕНИЯ<span id="menu-message">{{ not_read_message }}</span></a>
+            {% else %}
+                <a href="{% url 'all_messages' %}">СООБЩЕНИЯ<span style="display: none;" id="menu-message">0</span></a>
+            {% endif %}
+                <a href="{% url 'search' %}">ПОИСК</a>
+
+        </div>
+
+        {% if user|length > 20 %}
+
+        <div class="menu-user">
+            <a id="user" href="{% url 'settings_page_edit_profile' %}"><span class="dot-yes">●&nbsp;&nbsp;</span>
+                {% if request.user.first_name.upper|length > 0 or request.user.last_name.upper|length > 0  %}
+                {{ request.user.first_name.upper }}
+                {% else %}
+                NO NAME{% endif %}</a>
+        </div>
+
+        {% else %}
+
+        <div class="menu-user">
+            <a id="user" href="{% url 'settings_page_edit_profile' %}"><span class="dot-yes">●&nbsp;&nbsp;</span>
+                {% if request.user.first_name.upper|length > 0 or request.user.last_name.upper|length > 0  %}
+                {{ user.upper }}
+                {% else %}
+                NO NAME{% endif %}</a>
+        </div>
+
+        {% endif %}
+
+    {% else %}
+
+        <div class="menu-enter">
+            <a href="{% url 'login_page' %}">ВОЙТИ</a>
+        </div>
+
+    {% endif %}
+
+    <main>
+        {% block menu2%}
+        {% endblock %}
+    </main>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+
+</body>
+</html>

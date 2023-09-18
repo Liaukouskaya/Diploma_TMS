@@ -1,0 +1,53 @@
+{% extends 'base-useradmin.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="left-container">
+
+            <!-- Содержимое левой части экрана -->
+            <h3>Диалоги</h3>
+
+                {% for dialog in all_dialogs %}
+
+            <div class="all-dialog-list">
+
+                {% if dialog.last_message.read %}
+                <a href="/useradmin/dialog-{{ dialog.id }}"><img src="{{ dialog.another_user.avatar.url }}"></a>
+                {% else %}
+                <a href="/useradmin/dialog-{{ dialog.id }}"><img id="not-read-message" src="{{ dialog.another_user.avatar.url }}"></a>
+                {% endif %}
+
+
+                    <div class="photo-comment-user-date">
+                        <a href="/useradmin/dialog-{{ dialog.id }}">
+                            {{ dialog.another_user.first_name }} {{ dialog.another_user.last_name }}</a>
+                            <span class="photo-comment-date">{{ dialog.last_message_time }}</span>
+                    </div>
+            </div>
+
+        {% endfor %}
+
+        </div>
+
+        <div class="right-container">
+
+        <!-- Содержимое правой части экрана -->
+
+            <h3>Сообщения</h3>
+
+            {% if not messages %}
+                <!-- <h3>Выберите диалог</h3> -->
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

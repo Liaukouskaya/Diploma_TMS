@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block menu2 %}
+
+    <div class="menu2">
+    <a href="{% url 'login_page' %}">ВОЙТИ НА САЙТ</a>
+    <a href="{% url 'registration_page' %}">РЕГИСТРАЦИЯ</a>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="standard">
+        <h3>Мы выстали вак код подтверждения на e-mail!</h3>
+        <h3>Проверьте почту, и введите код поле</h3>
+    </div>
+
+    <div class="error">
+        {% if error %}
+            <p>{{ error }}</p>
+        {% endif %}
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ security_code_form.code }}
+        <button id="code-button" type="submit" name="submit_button" value="security_code_form">Подтвердить</button>
+    </form>
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base-useradmin.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block menu2 %}
+
+    <div class="menu2">
+    <a href="/useradmin/user-{{ person.profile_id }}/followers">ПОДПИСЧИКИ</a>
+    <a href="/useradmin/user-{{ person.profile_id }}/following">ПОДПИСКИ</a>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="avatar-another-user">
+        <a href="/useradmin/user-{{ person.profile_id }}"><img src="{{ person.avatar.url }}"></a>
+    </div>
+
+
+    <div class="standard">
+
+        <h3><a href="/useradmin/user-{{ person.profile_id }}">{{ person }}</a></h3>
+        <p>Всего подписок: {{ followers_count }}</p>
+
+    </div>
+
+     {% for follower in followers %}
+
+        <div class="photo-all-comment">
+            <a href="/useradmin/user-{{ follower.profile_id }}"><img src="{{ follower.avatar.url }}"></a>
+                <div class="photo-comment-user-date">
+                    <a href="/useradmin/user-{{ follower.profile_id }}">{{ follower.first_name }} {{ follower.last_name }}</a>
+                </div>
+        </div>
+
+        {% endfor %}
+
+
+
+{% endblock %}

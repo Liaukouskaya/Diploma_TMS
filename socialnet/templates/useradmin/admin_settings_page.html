@@ -1,0 +1,29 @@
+{% extends 'base-useradmin.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block menu2 %}
+
+    <div class="menu2">
+        {% if profile.user_admin %}
+    <a href="{% url 'settings_page_edit_profile' %}">ПРОФИЛЬ</a>
+        {% endif %}
+    <a href="{% url 'logout_page' %}">ВЫХОД</a>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+        <br>
+
+        <div class="error">
+            <h3>Вы вошли как администратор.</h3>
+        </div>
+
+        <div class="standard">
+            <p>Что бы вернуться в свой аккаунт как пользователь нажмите на вкладку "ПРОФИЛЬ"</p>
+        </div>
+
+{% endblock %}

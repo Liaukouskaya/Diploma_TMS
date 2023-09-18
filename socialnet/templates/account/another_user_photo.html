@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block menu2 %}
+
+    <div class="menu2">
+        <a href="/user-{{ person.profile_id }}/photo">ФОТОГРАФИИ</a>
+        <a href="">ВИДЕОЗАПИСИ</a>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+     <div class="avatar-another-user">
+        <a href="/user-{{ person.profile_id }}"><img src="{{ person.avatar.url }}"></a>
+    </div>
+
+    <div class="standard">
+
+        <h3><a href="/user-{{ person.profile_id }}">{{ person }}</a></h3>
+        <p>Всего фотографий: {{ photo_tot }}</p>
+
+    </div>
+
+    <div class="photo-page">
+
+        {% for photo in photo_all %}
+            <a href="/user-{{ person.profile_id }}/photo/show-{{ photo.id }}"><img src="{{ photo.photo.url }}" ></a>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

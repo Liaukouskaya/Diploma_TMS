@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+        {% if fallowing_group %}
+
+            <div class="standard">
+                <h3>Я подписан на сообщества</h3>
+            </div>
+
+        {% endif %}
+
+        {% for group in fallowing_group %}
+
+            <div class="photo-all-comment">
+                <a href="group-{{ group.profile_id }}"><img src="{{ group.avatar.url }}"></a>
+                    <div class="photo-comment-user-date">
+                        <a href="group-{{ group.profile_id }}">{{ group.first_name }}</a>
+                    </div>
+            </div>
+
+            <div class="view-post-b-group">
+                <form action="group-{{ group.profile_id }}">
+                    <button class="view-post"><p>➤</p></button>
+                </form>
+            </div>
+
+        {% endfor %}
+
+
+        {% if admin_group %}
+
+            <div class="standard">
+                <h3>Я администрирую сообщества</h3>
+            </div>
+
+            {% for group in admin_group %}
+
+                <div class="photo-all-comment">
+                    <a href="group-{{ group.profile_id }}"><img src="{{ group.avatar.url }}"></a>
+                        <div class="photo-comment-user-date">
+                            <a href="group-{{ group.profile_id }}">{{ group.first_name }}</a>
+                        </div>
+                </div>
+
+                <div class="view-post-b-group">
+                    <form action="group-{{ group.profile_id }}">
+                        <button class="view-post"><p>➤</p></button>
+                    </form>
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+
+        <div class="standard">
+            <h3>Мои сообщества</h3>
+        </div>
+
+
+        {% for group in user_group %}
+
+            <div class="photo-all-comment">
+                <a href="group-{{ group.profile_id }}"><img src="{{ group.avatar.url }}"></a>
+                    <div class="photo-comment-user-date">
+                        <a href="group-{{ group.profile_id }}">{{ group.first_name }}</a>
+                    </div>
+            </div>
+
+            <div class="view-post-b-group">
+                <form action="group-{{ group.profile_id }}">
+                    <button class="view-post"><p>➤</p></button>
+                </form>
+            </div>
+
+        {% endfor %}
+
+
+        <div class="search_field">
+            <form method="post">
+                {% csrf_token %}
+                {{ comment_form.comment }}
+                <button type="submit" name="submit_button" value="create_group">Создать</button>
+            </form>
+        </div>
+
+
+
+{% endblock %}
